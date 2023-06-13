@@ -1,0 +1,16 @@
+<div class="nav" *ngIf="user">
+  <div class="menu-layout">
+    <!-- <a *ngIf="!isAdmin">Вы вошли как преподаватель</a>
+    <a *ngIf="isAdmin">Вы вошли как администратор</a> -->
+    <div class="only">
+      <a routerLink="/" >Главная</a>
+      <a routerLink="/admin" *ngIf="isAdmin">Пользователи</a>
+    </div>
+  </div>
+  <a class="logout" (click)="logout()"
+    >Выйти<img src="../assets/logout.png"
+  /></a>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

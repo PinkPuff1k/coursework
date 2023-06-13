@@ -1,0 +1,7 @@
+<div class="container">
+  <h1 class="users-list">Список пользователей:</h1>
+  <ul *ngIf="users">
+    <li *ngFor="let user of users">{{ user.firstName }} {{ user.lastName }}</li>
+  </ul>
+
+</div>

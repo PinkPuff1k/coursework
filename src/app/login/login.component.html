@@ -1,0 +1,36 @@
+<!-- <div class="alert alert-info">
+        <strong>Normal User</strong> - U: user P: user<br />
+        <strong>Administrator</strong> - U: admin P: admin
+    </div> -->
+<div class="form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Вход</h2>
+    <div class="form-group">
+      <input
+        placeholder="Логин"
+        type="text"
+        formControlName="username"
+        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+      />
+      <div *ngIf="submitted && f['username'].errors">
+        <div class="mini-error" *ngIf="f['username'].errors['required']">Неверный логин</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        placeholder="Пароль"
+        type="password"
+        formControlName="password"
+        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+      />
+      <div *ngIf="submitted && f['password'].errors">
+        <div class="mini-error" *ngIf="f['password'].errors['required']">Неверный пароль</div>
+      </div>
+    </div>
+    <button [disabled]="loading">
+      <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+      Войти
+    </button>
+    <div class="mini-error" *ngIf="error">{{ error }}</div>
+  </form>
+</div>

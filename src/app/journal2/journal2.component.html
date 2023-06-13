@@ -1,0 +1,71 @@
+<div class="head">
+  <div class="group">
+    <h1>Группа {{ this.userFromApi.groups[this.clicks] }}</h1>
+    <div class="pagination">
+      <button (click)="clicked2($event)">
+        <img src="../../assets/up.png" />
+      </button>
+      <button (click)="clicked1($event)">
+        <img src="../../assets/down.png" />
+      </button>
+    </div>
+  </div>
+  <div *ngIf="isAdmin">
+    <input class="add" placeholder="Мероприятие" #event />
+    <input class="add" placeholder="Сроки" #deadlines />
+    <input class="add" placeholder="Ответственные" #responsible />
+    <input class="add add-group" placeholder="№" #group />
+    <button type="button" class="add-button" (click)="
+        add(event.value, group.value, deadlines.value, responsible.value);
+        event.value = '';
+        group.value = '';
+        deadlines.value='';
+        responsible.value='';
+      ">
+      <img src="../../assets/add.png" />
+    </button>
+  </div>
+  <!-- <ngb-pagination
+    [maxSize]="2"
+    [collectionSize]="collectionSize"
+    [pageSize]="itemsPerPage"
+    [(page)]="page"
+    (pageChange)="onPageChanged($event)"
+    size="sm"
+  >
+  </ngb-pagination> -->
+</div>
+
+<table class="table">
+  <tbody>
+
+    <tr>
+      <td class="align-c event" colspan="2">Мероприятие</td>
+      <td class="align-c deadlines" colspan="1">Сроки</td>
+      <td class="align-c" colspan="1">Ответственные</td>
+    </tr>
+
+    <tr *ngFor="let student of students; let i = index">
+      <td class="align-c grey">{{ i + 1 }}</td>
+      <td class="name">
+        <div class="cell">
+          {{ student.event }}
+          <button *ngIf="isAdmin" type="button" class="delete" (click)="delete(student)">
+            x
+          </button>
+        </div>
+      </td>
+
+      <td class="deadline">
+        <div class="cell">
+          {{ student.deadlines }}
+        </div>
+      </td>
+      <td class="responsible">
+        <div class="cell">
+          {{ student.responsible }}
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
